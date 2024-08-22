@@ -10,7 +10,7 @@ export const UserCard = (props: UserCardProps) => {
 	const { user, onClick, isSelected } = props;
 
 	return (
-		<div key={user.id} onClick={() => onClick(user.id)} className="user-card">
+		<div key={user.id} onClick={() => onClick(user.id)} className={`user-card ${isSelected ? 'selected' : ''}`}>
 			<img className="user-profile" src={user.image} />
 			<div className="user-info" >
 				<p>{user.name}</p>
