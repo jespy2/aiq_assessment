@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { fetchUsers, formatUser } from "./utils";
 import "./App.css";
 import { User } from "./types/index.types";
@@ -28,19 +28,24 @@ export default function App() {
 
 	const userClicked = (id: string) => {
 		setSelectedUser(id);
-	};
+  };
+  
+  // 6. Implement memoization for the User components to optimize performance. The components should only re-render when the user data is updated.
+  const userList = useMemo(() => {
+    return formattedUsers?.map((user) => (
+      <UserCard
+        user={user}
+        onClick={userClicked}
+        isSelected={user.id === selectedUser}
+      />
+    ));
+  }, [formattedUsers, selectedUser]);
 
 	return (
 		<>
 			{formattedUsers && (
 				<div className="user-list">
-					{formattedUsers.map((user) => (
-						<UserCard
-							user={user}
-							onClick={userClicked}
-							isSelected={user.id === selectedUser}
-						/>
-					))}
+					{userList}
 				</div>
 			)}
 		</>
