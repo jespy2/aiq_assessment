@@ -1,46 +1,20 @@
-# Getting Started with Create React App
+# Assessment for AIQ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instructions are as follows: 
+- Your task is to create a users page that displays a list of users and their friends.
+- Feel free to link a completed git repo, single code file, OR codesandbox enviornment
+- Example Figma: https://www.figma.com/design/Ts5BoWOhZbG9XVk0usz7tL/Sample?node-id=0-1&t=lcH5Pq1PxTaJNqyq-0
 
-## Available Scripts
+### Project Specs
+1. Use TypeScript to define the User type with the following properties: ID, rank, name, email, image, and friends (array of user IDs).
+2. Fetch the users' data from an API endpoint when the component mounts (fake fetch). The API response should be an array of User objects.
+3. Implement a function called formatUser that takes a User object as input. This function should fill in two additional properties: friendNames (an array of all friends' names) and highestRankingFriend (the ID of the friend with the highest rank). The friendNames array should contain the names of the users based on their IDs. Find the optimal place for this function so it's called as infrequently as possible. 
+4. Create a user component called User that receives the following props: user (User object), onClick (function to be called when the user is clicked), and isSelected (boolean indicating if the user is selected).
+5. Display the list of users on the users page using the User component. Show the user's name, email, and friend names in the component. When a user is clicked, update the selectedUser state variable to the ID of the clicked user.
+6. Implement memoization for the User components to optimize performance. The components should only re-render when the user data is updated.
+7. Implement searching functionality by name, ID, or friend's ID. Allow users to search for users by entering a query in an input field. Display only the users that match the search criteria. The search should be case-insensitive and match any part of the user's name, ID, or friend's ID.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Notes:
+- Please find commenting through out the code
+- Some of the design choices are driven by this being an isolated assessment (rather than part of a larger code base) and the use of local mocked data as opposed to data fetched from an API.  This has impacted how some functions were written and which state design patterns were applied.  Where I've deviated from typical best practices, I've tried to use commenting to highlight.
+- This is a standard create-react-app.  Clone to your local machine, and load dependencies with `npm install` and run with `npm run start`.
