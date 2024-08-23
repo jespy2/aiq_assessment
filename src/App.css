@@ -1,13 +1,29 @@
 /* Note:  The figma spec sheet had little detail.  I'm making guesses and otherwise just trying to make it look okay,
 but I would definitely be seeking much more detailed specs or refer to a style guide IRL */
+.app-container {
+  padding: 1rem;
+}
+
+.searchbar-container {
+  margin-bottom: 20px;
+  input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 20vw;
+  }
+  input::placeholder {
+    color: gray;
+  }
+}
+
 .user-list {
   height: 90vh;
   width: 90vw;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
-  margin: 10px;
+  align-items: space-between;
 }
 
 .user-card {
@@ -16,7 +32,8 @@ but I would definitely be seeking much more detailed specs or refer to a style g
   box-shadow: 1px 5px 5px 2px lightgray;
   border-radius: 15px;
   width: 30vw;
-  margin: 10px;
+  margin-bottom: 10px;
+  padding: 1rem;
 }
 
 .selected {
@@ -24,28 +41,24 @@ but I would definitely be seeking much more detailed specs or refer to a style g
 }
 
 .user-profile {
-  margin: 1rem;
   border-radius: 5px;
-  height: 150px;
-  width: 150px;
+  width: 8vw;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1rem;
-  font-size: 14px;
+  font-size: .75vw;
 }
 
 .user-id {
-  margin: 2rem;
   position: relative;
   p {
     position: absolute;
     top: 0px;
     left: 0px;
-    font-size: 14px;
+    font-size: .75vw;
     font-weight: 500;
   }
 }
