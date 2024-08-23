@@ -14,7 +14,7 @@ export const fetchUsers = async (users: User[]) => {
     return resp;
   }
   catch (error) {
-    // Would prefer have a more robust error handling solutions here such as logging to the back, redirecting the user to an error page and/or giving the user an error message
+    // Would prefer have a more robust error handling solutions here such as logging to the backend, redirecting the user to an error page and/or giving the user an error message
     console.log("The following error occured: ", error)
   }
 }

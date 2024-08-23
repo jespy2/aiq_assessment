@@ -17,7 +17,7 @@ export default function App() {
 	const [selectedUser, setSelectedUser] = useState<string | null>(null);
 	const [searchQuery, setSearchQuery] = useState<string>("");
 
-	// useEffects are a good cue that a custom hook may be more appropriate here.  Would consider the needs of the larger project to determine if this could/should be generified for use throughout the codebase, thus requiring conversion to a custom hook.  Leaving as-is per my understanding of the assessment specs
+	// Note: useEffects are a good cue that a custom hook may be more appropriate here.  Would consider the needs of the larger project to determine if this could/should be generified for use throughout the codebase, thus requiring conversion to a custom hook.  Leaving as-is per my understanding of the assessment specs
 	useEffect(() => {
 		const fetchData = async () => {
 			const usersData = await fetchUsers(sampleData);
@@ -26,6 +26,7 @@ export default function App() {
 		fetchData();
 	}, []);
 
+  // Note: This functionality could have been included as part of the initial load (within the useEffect function above), but without clarity on how/when user data may be updated (user interactions, server side change as users are adde/updated/deleted), I've seperated out this logic to only run when user data changes
 	useEffect(() => {
 		const _formattedUsers = users?.map((user) => formatUser(user));
 		if (_formattedUsers) {

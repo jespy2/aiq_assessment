@@ -17,4 +17,5 @@
 ## Notes:
 - Please find commenting through out the code
 - Some of the design choices are driven by this being an isolated assessment (rather than part of a larger code base) and the use of local mocked data as opposed to data fetched from an API.  This has impacted how some functions were written and which state design patterns were applied.  Where I've deviated from typical best practices, I've tried to use commenting to highlight.
-- This is a standard create-react-app.  Clone to your local machine, and load dependencies with `npm install` and run with `npm run start`.
+- Some essentials that were skipped altogether include acessibility, testing and responsive styling--all of which would need to be at least considered if not implemented IRL.
+- This is a standard create-react-app.  Clone to your local machine, load dependencies with `npm install` and run with `npm run start`.
