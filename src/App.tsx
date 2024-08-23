@@ -3,7 +3,7 @@ import { fetchUsers, formatUser } from "./utils";
 import "./App.css";
 import { User } from "./types/index.types";
 import { sampleData } from "./mock-data";
-import { UserCard } from "./components/UserCard";
+import { SearchBar, UserCard } from "./components/";
 
 // To make the code easier to read, I've moved the instructions to the README and added specific specs as comments where appropriate within the code.
 
@@ -30,24 +30,29 @@ export default function App() {
 		setSelectedUser(id);
   };
   
-  // 6. Implement memoization for the User components to optimize performance. The components should only re-render when the user data is updated.
-  const userList = useMemo(() => {
-    return formattedUsers?.map((user) => (
-      <UserCard
-        user={user}
-        onClick={userClicked}
-        isSelected={user.id === selectedUser}
-      />
-    ));
-  }, [formattedUsers, selectedUser]);
+  const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchValue = e.target.value.toLowerCase();
+    const filteredUsers = formattedUsers?.filter(user => {
+      return user.name.toLowerCase().includes(searchValue) || user.id.toLowerCase().includes(searchValue) || user.friends.some(friendId => friendId.toLowerCase().includes(searchValue))
+    });
+    filteredUsers && setFormattedUsers(filteredUsers);
+  }
+
+	// 6. Implement memoization for the User components to optimize performance. The components should only re-render when the user data is updated.
+	const userList = useMemo(() => {
+		return formattedUsers?.map((user) => (
+			<UserCard
+				user={user}
+				onClick={userClicked}
+				isSelected={user.id === selectedUser}
+			/>
+		));
+	}, [formattedUsers, selectedUser]);
 
 	return (
-		<>
-			{formattedUsers && (
-				<div className="user-list">
-					{userList}
-				</div>
-			)}
-		</>
+		<div className="app-container">
+			<SearchBar onChange={onSearchChange} />
+			{formattedUsers && <div className='user-list'>{userList}</div>}
+		</ div>
 	);
 }

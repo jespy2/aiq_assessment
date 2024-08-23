@@ -15,3 +15,7 @@ export type UserCardProps = {
   onClick: (id: string) => void;
   isSelected: boolean;
 }
+
+export type SearchBarProps = {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
