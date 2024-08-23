@@ -9,6 +9,10 @@ import { UserCardProps } from "../../types/index.types";
 export const UserCard = (props: UserCardProps) => {
 	const { user, onClick, isSelected } = props;
 
+	const numFriends = user.friendNames
+		? user.friendNames?.length - 1
+		: 0;
+
 	return (
 		<div
 			key={user.id}
@@ -21,8 +25,10 @@ export const UserCard = (props: UserCardProps) => {
 				<p>{user.email}</p>
 				{/* Note: The mockup only shows the first names, but this is not specified in the instructions.  Defaulting to the instructions, but IRL, I would get clarification */}
 				<p>
-					{user.friendNames?.map((name) => (
-						<>{name}, </>
+					{user.friendNames?.map((name, idx) => (
+						idx < numFriends
+						? <>{name}, </>
+						: <>{name}</>
 					))}
 				</p>
 			</div>
