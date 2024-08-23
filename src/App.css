@@ -1,5 +1,8 @@
 /* Note:  The figma spec sheet had little detail.  I'm making guesses and otherwise just trying to make it look okay,
-but I would definitely be seeking much more detailed specs or refer to a style guide IRL */
+but I would definitely be seeking much more detailed specs or refer to a style guide IRL 
+
+One thing that isn't clear is how to handle overflow of the list.  I assume we would apply pagination and vertical scrolling if the number of users exceeded the screen size, but without clarity on that, I'm skipping it in my styling choices.
+*/
 .app-container {
   padding: 1rem;
 }
