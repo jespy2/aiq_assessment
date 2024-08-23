@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, lazy } from "react";
 import { fetchUsers, formatUser } from "./utils";
 import "./App.css";
 import { User } from "./types/index.types";
 import { sampleData } from "./mock-data";
-import { SearchBar, UserCard } from "./components/";
+import { SearchBar } from "./components/";
 
 // To make the code easier to read, I've moved the instructions to the README and added specific specs as comments where appropriate within the code.
+
+const UserCard = lazy(() => import('./components/components/UserCard'))
 
 export default function App() {
 	const [users, setUsers] = useState<User[] | null>(null);
@@ -54,7 +56,7 @@ export default function App() {
 		setSearchQuery(e.target.value.toLowerCase());
 	};
 
-	// 6. Implement memoization for the User components to optimize performance. The components should only re-render when the user data is updated.
+  // 6. Implement memoization for the User components to optimize performance. The components should only re-render when the user data is updated.
 	const userList = useMemo(() => {
 		return displayedUsers?.map((user) => (
 			<UserCard

@@ -6,7 +6,7 @@ import { UserCardProps } from "../../types/index.types";
 
 // Note: The name of this component was changed to UserCard to avoid naming conflicts with the type "User"
 
-export const UserCard = (props: UserCardProps) => {
+const UserCard = (props: UserCardProps) => {
 	const { user, onClick, isSelected } = props;
 
 	const numFriends = user.friendNames
@@ -19,7 +19,8 @@ export const UserCard = (props: UserCardProps) => {
 			onClick={() => onClick(user.id)}
 			className={`user-card ${isSelected ? "selected" : ""}`}
 		>
-			<img className='user-profile' src={user.image} />
+			{/* Adding 3rd party libraries seemed out of scope for this assessment, but I would normally recommend using something like react-lazy-load-component to add functionality like rendering with a placeholder and transitions for a better user experience */}
+			<img className='user-profile' src={user.image} loading="lazy" alt={`${user.name} avatar`} />
 			<div className='user-info'>
 				<p>{user.name}</p>
 				<p>{user.email}</p>
@@ -39,3 +40,5 @@ export const UserCard = (props: UserCardProps) => {
 		</div>
 	);
 };
+
+export default UserCard;
